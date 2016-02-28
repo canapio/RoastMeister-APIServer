@@ -6,14 +6,22 @@
 Content-Type: application/x-www-form-urlencoded
 ```
 
-
+Host | Port |
+-----|------|
+api.canapio.com|3000|
 
 #### 0. Test API
 ```GET / ```
 
 This api is test api.
 
-
+**Response**
+```json
+{
+  "error": false,
+  "message": "Wooooooooooooooooooooooooooo"
+}
+```
 
 #### 1. Get Auto Completion List
 ```GET /roastmeister001/autocomplete/:title```
