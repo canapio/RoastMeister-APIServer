@@ -15,6 +15,13 @@ $ mongod
 $ node server.js
 ```
 
+
+## Version
+Version       | Release Date | Description                                          | Status     |
+------------- | ------------ | ---------------------------------------------------- | ---------- |
+v0.1          | -            | Auto completion (nation, farm, beankind, faul)       | Develop    |
+
+
 ## Protocol
 
 #### 1. Get Auto Completion List
@@ -37,8 +44,3 @@ limit     | Number | O        | Default limitation is '8'. You cannot upper than
 }
 ```
 
-
-## Version
-Version       | Release Date | Description                                          | Status     |
-------------- | ------------ | ---------------------------------------------------- | ---------- |
-v0.1          | -            | Auto completion (nation, farm, beankind, faul)       | Develop    |
