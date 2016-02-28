@@ -26,7 +26,7 @@ v0.1          | -            | Auto completion (nation, farm, beankind, faul)   
 
 #### 1. Get Auto Completion List
 ```
-POST /autocomplete/:title
+GET /autocomplete/:title
 ```
 **Parameters**
 
