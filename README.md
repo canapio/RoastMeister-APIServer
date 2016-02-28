@@ -17,7 +17,7 @@ $ node server.js
 
 ## Protocol
 
-##### Get Auto Completion List
+### Get Auto Completion List
 ```
 POST /autocomplete/:title
 ```
