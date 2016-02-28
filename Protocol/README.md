@@ -3,7 +3,8 @@
 ## API Protocol
 
 ```
-Content-Type: application/x-www-form-urlencoded
+Content-Type: application/x-www-form-urlencoded,
+Authorization: your_own_authorization_key
 ```
 
 Host | Port |

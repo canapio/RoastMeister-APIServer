@@ -55,9 +55,69 @@ var checkRequireParams = function(target, requirments) {
 
 
 
+//
+// Authorization part
+var authorizationKey = null
+var mongoSchema =   mongoose.Schema;
+var authorizationSchema = new mongoSchema({
+  key : {type: String, require: true, unique: true},
+  created_at: Date
+})
+var AuthorizationModel = connection.model("Authorization", authorizationSchema);
+if (process.argv && process.argv.length>2) {
+  AuthorizationModel.count({}, function(err, count) {
+    authorizationKey = process.argv[2]
+    if (count>0) {
+      // error
+      console.log("ERROR : Here was aleady set authenticaiton key.")
+      process.exit(1);
+    } else {
+      // set key
+      var keydocument = new AuthorizationModel({
+        key: authorizationKey,
+        created_at: new Date()
+      })
+      keydocument.save(function(err) {
+        console.log("Success regist authorization key.")
+      })
+    }
+  })
+} else {
+  AuthorizationModel.count({}, function(err, count) {
+    if (count>0) {
+      // ok
+      AuthorizationModel.find({}, function(err, data) {
+        authorizationKey = data[0].key
+      })
+
+    } else {
+      // error
+      console.log("ERROR : You must authenticaiton key at third argv.")
+      console.log("ex) $ node server.js authenticaiton_key")
+      process.exit(1);
+    }
+  })
+}
+//
+//
 
 
 
+
+
+
+
+
+app.use('/roastmeister001', function (req, res, next) {
+  // console.log('Time: %d', Date.now());
+  if (req.header('Authorization') && req.header('Authorization') == authorizationKey) {
+    next();
+  } else {
+    response = {"error" : true, "message" : "Invalid Authorization Key."};
+    res.json(response);
+  }
+
+});
 
 
 
@@ -133,19 +193,7 @@ router.route("/roastmeister001/autocomplete/:title")
         }
       }
       var response = {"error" : true, "message" : "you cannnot use '" + req.params.title + "'db."}
-      res.json(response);
-      return
-
-      console.log(req.params.id)
-      mongoOp.findById(req.params.id,function(err, data){
-      // This will run Mongo Query to fetch data based on ID.
-          if(err) {
-              response = {"error" : true,"message" : "Error fetching data"};
-          } else {
-              response = {"error" : false,"message" : data};
-          }
-          res.json(response);
-      });
+      res.json(response)
   })
 
 

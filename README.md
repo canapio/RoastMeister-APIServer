@@ -1,6 +1,6 @@
 # RoastMeister-Server
 This application is server application for Roast Meister(iOS) based on Node.js
-* Auto completion function (This server application collects word from user input in iOS client application.)
+* Auto completion function : This server application collects word from user input in iOS client application.
 
 
 ## Prerequisites
@@ -18,8 +18,8 @@ $ git clone https://github.com/canapio/RoastMeister-Server.git
 # move to nodejs folder
 $ cd RoastMeister-Server/RoastMeisterServer001
 
-# Run server.js
-$ node server.js
+# Run server.js (Input auth_key only first time. After second time, command $ node server.js)
+$ node server.js auth_key
 ```
 
 
