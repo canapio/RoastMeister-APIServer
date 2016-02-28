@@ -30,6 +30,7 @@ Content-Type: application/x-www-form-urlencoded
 
 #### 1. Get Auto Completion List
 ```GET /autocomplete/:title```
+
 **Parameters**
 
 Name      | Type   | Required | Description
