@@ -1,6 +1,6 @@
 # RoastMeister-Server
 
-## Protocol
+## API Protocol
 
 ```
 Content-Type: application/x-www-form-urlencoded

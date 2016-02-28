@@ -1,5 +1,6 @@
 # RoastMeister-Server
 This application is server application for Roast Meister(iOS) based on Node.js
+* Auto completion function (This server application collects word from user input in iOS client application.)
 
 
 ## Prerequisites
@@ -28,5 +29,5 @@ Version       | Release Date | Description                                      
 v0.1          | -            | Auto completion (nation, farm, beankind, faul)       | Develop    |
 
 
-## Protocol
+## API Protocol
 [Here](https://github.com/canapio/RoastMeister-Server/tree/master/Protocol)
