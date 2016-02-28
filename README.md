@@ -24,12 +24,12 @@ v0.1          | -            | Auto completion (nation, farm, beankind, faul)   
 
 ## Protocol
 
-```Content-Type: application/x-www-form-urlencoded```
+```
+Content-Type: application/x-www-form-urlencoded
+```
 
 #### 1. Get Auto Completion List
-```
-GET /autocomplete/:title
-```
+```GET /autocomplete/:title```
 **Parameters**
 
 Name      | Type   | Required | Description
