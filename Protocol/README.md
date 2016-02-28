@@ -2,6 +2,7 @@
 
 ## API Protocol
 
+**Header**
 ```
 Content-Type: application/x-www-form-urlencoded,
 Authorization: your_own_authorization_key
