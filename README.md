@@ -11,6 +11,12 @@ This application is server application for Roast Meister(iOS) based on Node.js
 # Start the mongo server in a separate terminal
 $ mongod
 
+# clone repository
+$ git clone https://github.com/canapio/RoastMeister-Server.git
+
+# move to nodejs folder
+$ cd RoastMeister-Server/RoastMeisterServer001
+
 # Run server.js
 $ node server.js
 ```
