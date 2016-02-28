@@ -92,10 +92,10 @@ faul      | String | O        |
 **Response**
 ```json
 {
-  "error": false
-  "message": "success"
+  "error": false,
+  "message": "success",
   "data": {
-    "upsert": 1
+    "upsert": 1,
     "error": 0
   }
 }
