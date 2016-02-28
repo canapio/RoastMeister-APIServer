@@ -84,8 +84,14 @@ AutoComplete.prototype.search = function(query, callback) {
   } else if (query.limit && query.limit >= 50) {
     limit = 50
   }
-
-  this.Model.find({name: new RegExp(query.q, 'i')}).sort({'count':-1}).limit(limit).exec(callback)
+  var selectquery = {
+    name: 1,
+    _id: 1,
+    count: 1,
+    created_at: 1,
+    updated_at: 1
+  }
+  this.Model.find({name: new RegExp(query.q, 'i')}).sort({'count':-1}).select(selectquery).limit(limit).exec(callback)
 }
 
 
