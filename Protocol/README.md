@@ -9,7 +9,7 @@ Content-Type: application/x-www-form-urlencoded
 #### 1. Get Auto Completion List
 ```GET /roastmeister001/autocomplete/:title```
 
-This api response result with **q** search by sorting with deviceids's count.
+This api response result with **q** search by sorting with deviceids's count. ```:title``` only can use "**nation, farm, beankind, machine, faul**"
 
 **Parameters**
 
