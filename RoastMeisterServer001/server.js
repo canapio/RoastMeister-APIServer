@@ -5,6 +5,10 @@ var bodyParser   =   require("body-parser");
 var mongoose     =   require("mongoose");
 var router       =   express.Router();
 var AutoComplete =   require("./models/autocomplete")
+// var site_vhosts  = []
+// var vhost
+
+
 
 
 var connection = mongoose.connect('mongodb://localhost:27017/roastmeister001')
@@ -71,7 +75,7 @@ for (var i=0; i<autocompleteTitles.length; i++) {
 
 
 // POST autocomplete
-router.route("/autocomplete")
+router.route("/roastmeister001/autocomplete")
   .post(function(req,res){
     var checkedRequireParams = checkRequireParams(req.body, ["deviceid"])
     var deviceid = req.body.deviceid
@@ -108,7 +112,7 @@ function upsertAutocompleteWithCallback (params, i, response, callback) {
 }
 
 // GET autocompletes
-router.route("/autocomplete/:title")
+router.route("/roastmeister001/autocomplete/:title")
   .get(function(req,res){
       for (var i=0; i<autocompleteTitles.length; i++) {
         if (autocompleteTitles[i] == req.params.title) {
@@ -148,6 +152,12 @@ router.route("/autocomplete/:title")
 
 
 app.use('/',router);
+
+
+
+
+// site_vhosts.push(express.vhost('rm.canapio.com', app));
+// vhost = express().apply(this, site_vhosts);
 
 app.listen(3000);
 console.log("Listening to PORT 3000");

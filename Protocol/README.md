@@ -7,7 +7,7 @@ Content-Type: application/x-www-form-urlencoded
 ```
 
 #### 1. Get Auto Completion List
-```GET /autocomplete/:title```
+```GET /roastmeister001/autocomplete/:title```
 
 **Parameters**
 
@@ -24,4 +24,3 @@ limit     | Number | O        | Default limitation is '8'. You cannot upper than
 
 }
 ```
-
