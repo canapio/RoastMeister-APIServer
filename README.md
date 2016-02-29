@@ -1,6 +1,6 @@
 # RoastMeister-Server
 
-![](https://raw.githubusercontent.com/canapio/RoastMeister-Server/master/roast_meister_server_logo.png)
+![](https://github.com/canapio/RoastMeister-Server/blob/master/roast_meister_server_logo.png?raw=true)
 
 En
 
