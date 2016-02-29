@@ -41,4 +41,4 @@ v0.1          | -            | Auto completion (nation, farm, beankind, faul)   
 
 
 ## API Protocol
-[Here](https://github.com/canapio/RoastMeister-Server/wiki/RoastMeister-Server)
+[Here](https://github.com/canapio/RoastMeister-Server/wiki/API-Protocol)
