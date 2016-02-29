@@ -1,5 +1,7 @@
 # RoastMeister-Server
 
+![](https://raw.githubusercontent.com/canapio/RoastMeister-Server/master/roast_meister_server_logo.png)
+
 En
 
 This application is server application for Roast Meister(iOS) based on Node.js
