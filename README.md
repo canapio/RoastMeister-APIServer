@@ -35,9 +35,9 @@ $ node server.js auth_key
 
 
 ## Version
-Version       | Release Date | Description                                          | Status     |
-------------- | ------------ | ---------------------------------------------------- | ---------- |
-v0.1          | -            | Auto completion (nation, farm, beankind, faul)       | Develop    |
+Version       | Release Date | Description                                             | Status     |
+------------- | ------------ | ------------------------------------------------------- | ---------- |
+v0.1          | 2016.03.01   | Auto completion (nation, farm, beankind, machine, faul) | Release    |
 
 
 ## API Protocol
