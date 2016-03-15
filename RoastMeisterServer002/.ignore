@@ -1,0 +1,4 @@
+*.log
+*.DS_Store
+RoastMeister002/config/auth.js
+RoastMeister002/config/database.js
