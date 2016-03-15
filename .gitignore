@@ -31,3 +31,9 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+
+
+# Auth files
+RoastMeisterServer002/config/auth.js
+RoastMeisterServer002/config/database.js
