@@ -1,6 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+  <style media="screen">
+    html {
+      background-color: #24344E;
+    }
+  </style>
   <script type="text/javascript">
   window.onload = function () {
     var sampledata = <%-JSON.stringify(sampledata)%>
@@ -55,6 +60,7 @@
       title:{
       text: "Carloz Sample Data"
       },
+      backgroundColor: "#16212F",
       axisX:{valueFormatString: "mm:ss"},
       data: [{
         type: "spline",
@@ -103,7 +109,10 @@
   </script>
  <script type="text/javascript" src="dist/js/canvasjs.min.js"></script></head>
 <body>
-  <div id="chartContainer" style="height: 440px; width: 100%;">
+  <div style="padding: 8px 20px; background-color: #16212F;">
+    <div id="chartContainer" style="height: 440px; width: 100%;">
+    </div>
   </div>
+
 </body>
 </html>
