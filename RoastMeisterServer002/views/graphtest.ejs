@@ -8,11 +8,9 @@
   </style>
   <script type="text/javascript">
   window.onload = function () {
-    var sampledata = <%-JSON.stringify(sampledata)%>
-
-    var metadata = sampledata["metadata"]
-    var tempdataArray = sampledata["tempdataArray"]
-    var coffeeingdataArray = sampledata["coffeeingdataArray"]
+    // var metadata = sampledata["metadata"]
+    var tempdataArray = <%-JSON.stringify(sampledata["tempdataArray"])%>
+    // var coffeeingdataArray = sampledata["coffeeingdataArray"]
 
     // console.log(JSON.stringify(tempdataArray))
 
@@ -83,42 +81,15 @@
       data: [{
         type: "spline",
         color: "#FD555B",
-        dataPoints: drumtempDataPoints/*[
-        { x: new Date(10*1000), y: 21 },
-        { x: new Date(20*1000), y: 25},
-        { x: new Date(30*1000), y: 20 },
-        { x: new Date(40*1000), y: 25 },
-        { x: new Date(50*1000), y: 27 },
-        { x: new Date(60*1000), y: 28 },
-        { x: new Date(70*1000), y: 28 },
-        { x: new Date(80*1000), y: 24 },
-        { x: new Date(90*1000), y: 26}]*/
+        dataPoints: drumtempDataPoints
       }, {
         type: "spline",
         color: "#2866C5",
-        dataPoints: potentialtempDataPoints/*[
-        { x: new Date(10*1000), y: 31 },
-        { x: new Date(20*1000), y: 35},
-        { x: new Date(30*1000), y: 30 },
-        { x: new Date(40*1000), y: 35 },
-        { x: new Date(50*1000), y: 35 },
-        { x: new Date(60*1000), y: 38 },
-        { x: new Date(70*1000), y: 38 },
-        { x: new Date(80*1000), y: 34 },
-        { x: new Date(90*1000), y: 44}]*/
+        dataPoints: potentialtempDataPoints
       }, {
         type: "spline",
         color: "#2DBE85",
-        dataPoints: airtempDataPoints/*[
-        { x: new Date(10*1000), y: 45 },
-        { x: new Date(20*1000), y: 50},
-        { x: new Date(30*1000), y: 40 },
-        { x: new Date(40*1000), y: 45 },
-        { x: new Date(50*1000), y: 45 },
-        { x: new Date(60*1000), y: 48 },
-        { x: new Date(70*1000), y: 43 },
-        { x: new Date(80*1000), y: 41 },
-        { x: new Date(90*1000), y: 28}]*/
+        dataPoints: airtempDataPoints
       }]
     });
 
