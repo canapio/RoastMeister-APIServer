@@ -15,6 +15,11 @@ module.exports = function(passport) {
       sampledata : sampledataobject
     });
   });
+  app.get('/autocomplete', function(req, res) {
+    res.render('autocomplete.ejs', {
+      sampledata : sampledataobject
+    });
+  });
   // app.get("/",function(req,res){
   //   res.json({"error" : false,"message" : "This is my server"});
   // });

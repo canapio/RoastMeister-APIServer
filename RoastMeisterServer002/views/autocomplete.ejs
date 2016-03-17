@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+
+    <title>Responsive Navigation Menu - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="../dist/css/leftnavimenu.css" media="screen" title="no title" charset="utf-8">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/dashboard.css" rel="stylesheet">
+    <script src="../dist/js/ie-emulation-modes-warning.js"></script>
+
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          // window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+
+
+<div class="nav-side-menu">
+    <div class="brand">Roast Meister Admin</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+
+                <li class="active collapsed active" data-toggle="collapse" data-target="#userside">
+                  <a href="#">자동완성<span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse in" id="userside">
+                    <li class="active collapsed active"><a href="#">국가명</a></li>
+                    <li><a href="#">농장-지역명</a></li>
+                    <li><a href="#">품종멱</a></li>
+                    <li><a href="#">로스팅 머신</a></li>
+                    <li><a href="#">연료</a></li>
+                </ul>
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a href="#">로스팅 자료<span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="service">
+                  <li>New Service 1</li>
+                  <li>New Service 2</li>
+                  <li>New Service 3</li>
+                </ul>
+                 <li><a href="#">Profile</a></li>
+                 <li><a href="#">Users</a></li>
+            </ul>
+     </div>
+</div>
+
+
+
+
+<div class="main-body main">
+  <h1 class="page-header">Dashboard</h1>
+
+  <div class="row placeholders">
+    <div class="col-xs-6 col-sm-3 placeholder">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4>Label</h4>
+      <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4>Label</h4>
+      <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4>Label</h4>
+      <span class="text-muted">Something else</span>
+    </div>
+    <div class="col-xs-6 col-sm-3 placeholder">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+      <h4>Label</h4>
+      <span class="text-muted">Something else</span>
+    </div>
+  </div>
+
+  <h2 class="sub-header">Section title</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><a>Name <i class="fa fa-caret-down"></i></a></th>
+          <th><a>Count <i class="fa fa-caret-up"></i></a></th>
+          <th><a>Created Date <i class="fa fa-caret-down"></i></a></th>
+          <th><a>Updated Date <i class="fa fa-caret-down"></i></a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1,001</td>
+          <td>Lorem</td>
+          <td>ipsum</td>
+          <td>dolor</td>
+          <td>sit</td>
+        </tr>
+        <tr>
+          <td>1,002</td>
+          <td>amet</td>
+          <td>consectetur</td>
+          <td>adipiscing</td>
+          <td>elit</td>
+        </tr>
+        <tr>
+          <td>1,003</td>
+          <td>Integer</td>
+          <td>nec</td>
+          <td>odio</td>
+          <td>Praesent</td>
+        </tr>
+        <tr>
+          <td>1,003</td>
+          <td>libero</td>
+          <td>Sed</td>
+          <td>cursus</td>
+          <td>ante</td>
+        </tr>
+        <tr>
+          <td>1,004</td>
+          <td>dapibus</td>
+          <td>diam</td>
+          <td>Sed</td>
+          <td>nisi</td>
+        </tr>
+        <tr>
+          <td>1,005</td>
+          <td>Nulla</td>
+          <td>quis</td>
+          <td>sem</td>
+          <td>at</td>
+        </tr>
+        <tr>
+          <td>1,006</td>
+          <td>nibh</td>
+          <td>elementum</td>
+          <td>imperdiet</td>
+          <td>Duis</td>
+        </tr>
+        <tr>
+          <td>1,007</td>
+          <td>sagittis</td>
+          <td>ipsum</td>
+          <td>Praesent</td>
+          <td>mauris</td>
+        </tr>
+        <tr>
+          <td>1,008</td>
+          <td>Fusce</td>
+          <td>nec</td>
+          <td>tellus</td>
+          <td>sed</td>
+        </tr>
+        <tr>
+          <td>1,009</td>
+          <td>augue</td>
+          <td>semper</td>
+          <td>porta</td>
+          <td>Mauris</td>
+        </tr>
+        <tr>
+          <td>1,010</td>
+          <td>massa</td>
+          <td>Vestibulum</td>
+          <td>lacinia</td>
+          <td>arcu</td>
+        </tr>
+        <tr>
+          <td>1,011</td>
+          <td>eget</td>
+          <td>nulla</td>
+          <td>Class</td>
+          <td>aptent</td>
+        </tr>
+        <tr>
+          <td>1,012</td>
+          <td>taciti</td>
+          <td>sociosqu</td>
+          <td>ad</td>
+          <td>litora</td>
+        </tr>
+        <tr>
+          <td>1,013</td>
+          <td>torquent</td>
+          <td>per</td>
+          <td>conubia</td>
+          <td>nostra</td>
+        </tr>
+        <tr>
+          <td>1,014</td>
+          <td>per</td>
+          <td>inceptos</td>
+          <td>himenaeos</td>
+          <td>Curabitur</td>
+        </tr>
+        <tr>
+          <td>1,015</td>
+          <td>sodales</td>
+          <td>ligula</td>
+          <td>in</td>
+          <td>libero</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/vendor/holder.min.js"></script>
+<script src="../dist/js/ie10-viewport-bug-workaround.js"></script>
+</html>
