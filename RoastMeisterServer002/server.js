@@ -49,5 +49,6 @@ app.use('/dist', require('./app/static.js')())
 // site_vhosts.push(express.vhost('rm.canapio.com', app));
 // vhost = express().apply(this, site_vhosts);
 
-app.listen(8000);
-console.log("Listening to PORT 8000");
+app.listen(8000).on('error', function(err) {
+  console.log(err)
+});
