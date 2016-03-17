@@ -18,8 +18,7 @@ var session      = require('express-session');
 var configDB = require('./config/database.js');
 
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
-
+var connect = mongoose.connect(configDB.url); // connect to our database
 require('./config/passport')(passport); // pass passport for configuration
 
 app.use(morgan('dev')); // log every request to the console
@@ -37,7 +36,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 
-app.use('/', require('./app/routes.js')(passport))
+app.use('/', require('./app/routes.js')(passport, connect))
 app.use('/dist', require('./app/static.js')())
 
 // app.use(express.static('public'));

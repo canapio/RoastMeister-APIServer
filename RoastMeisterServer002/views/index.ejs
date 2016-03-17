@@ -1,20 +1,97 @@
+
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
-    <title>Roast Meister</title>
+    <meta name="robots" content="noindex">
 
-    <style media="screen">
-    html {
-      background: url("http://s30.postimg.org/uvcoj0noh/coffee_bg.jpg") no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
-    </style>
-  </head>
-  <body>
+    <title>Responsive Navigation Menu - Bootsnipp.com</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="../dist/css/leftnavimenu.css" media="screen" title="no title" charset="utf-8">
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/dashboard.css" rel="stylesheet">
+    <script src="../dist/js/ie-emulation-modes-warning.js"></script>
 
-  </body>
+    <script type="text/javascript">
+        window.alert = function(){};
+        var defaultCSS = document.getElementById('bootstrap-css');
+        function changeCSS(css){
+            if(css) $('head > link').filter(':first').replaceWith('<link rel="stylesheet" href="'+ css +'" type="text/css" />');
+            else $('head > link').filter(':first').replaceWith(defaultCSS);
+        }
+        $( document ).ready(function() {
+          var iframe_height = parseInt($('html').height());
+          // window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
+        });
+    </script>
+</head>
+<body>
+
+
+<div class="nav-side-menu">
+    <div class="brand">Roast Meister Admin</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+
+                <li class="collapsed" data-toggle="collapse" data-target="#userside">
+                  <a href="">자동완성<span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="userside">
+                    <li><a href="autocomplete/nation">국가명</a></li>
+                    <li><a href="autocomplete/fram">농장-지역명</a></li>
+                    <li><a href="autocomplete/beankind">품종멱</a></li>
+                    <li><a href="autocomplete/machin">로스팅 머신</a></li>
+                    <li><a href="autocomplete/faul">연료</a></li>
+                </ul>
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                  <a href="#">로스팅 자료<span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="service">
+                  <li>New Service 1</li>
+                  <li>New Service 2</li>
+                  <li>New Service 3</li>
+                </ul>
+                 <li><a href="#">Profile</a></li>
+                 <li><a href="#">Users</a></li>
+            </ul>
+     </div>
+</div>
+
+
+
+<style media="screen">
+html, body {
+  /*height: 100%;*/
+}
+div.index {
+
+  background: url("http://s30.postimg.org/uvcoj0noh/coffee_bg.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 0;
+  position: absolute;
+  opacity: 0.2;
+}
+</style>
+<div class="main-body index">
+
+
+</div>
+</body>
+<script src="../dist/js/bootstrap.min.js"></script>
+<script src="../dist/js/vendor/holder.min.js"></script>
+<script src="../dist/js/ie10-viewport-bug-workaround.js"></script>
 </html>
