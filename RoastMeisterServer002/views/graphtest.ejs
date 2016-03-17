@@ -56,12 +56,30 @@
     }
 
     // console.log(sampledata)
+    var axisColor = "#444444"
     var chart = new CanvasJS.Chart("chartContainer", {
       title:{
       text: "Carloz Sample Data"
       },
       backgroundColor: "#16212F",
-      axisX:{valueFormatString: "mm:ss"},
+      axisX:{
+        valueFormatString: "m:s",
+        gridColor: axisColor,
+        lineColor: axisColor,
+        tickColor: axisColor,
+        labelFontSize: 14,
+        labelFontFamily: "Helvetica",
+        // interlacedColor: "#555555"
+      },
+      axisY:{
+        // valueFormatString: "mm:ss",
+        gridColor: axisColor,
+        lineColor: axisColor,
+        tickColor: axisColor,
+        labelFontSize: 14,
+        labelFontFamily: "Helvetica",
+        // interlacedColor: "#555555"
+      },
       data: [{
         type: "spline",
         color: "#FD555B",
