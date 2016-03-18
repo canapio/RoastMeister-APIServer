@@ -11,7 +11,7 @@ module.exports = function(passport, connect) {
   var app = express()
   var router = express.Router();
 
-  var apiTitles = ["countrys", "province-district", "variety", "machine", "faul"]
+  var apiTitles = ["countrys", "provinces-districts", "varieties", "machines", "fauls"]
   var autocompleteTitles = ["nation", "farm", "beankind", "machine", "faul"]
   var autocompleteModelMaker =   require("../app/models/autocomplete.js")
   var autocompleteModels = {}
