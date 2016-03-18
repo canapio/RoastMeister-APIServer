@@ -101,17 +101,24 @@
       <thead>
         <tr>
           <th>#</th>
-          <th><a onclick="reloadDataWithSortField('name', 1);">Name <i class="fa fa-caret-down"></i></a></th>
-          <th><a onclick="reloadDataWithSortField('count', 1);">Count <i class="fa fa-caret-up"></i></a></th>
-          <th><a onclick="reloadDataWithSortField('created_at', 1);">Created Date <i class="fa fa-caret-down"></i></a></th>
-          <th><a onclick="reloadDataWithSortField('updated_at', 1);">Updated Date <i class="fa fa-caret-down"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('name');">Name <i id="name_arrow" class="fa fa-caret-down"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('count');">Count <i id="count_arrow" class="fa fa-caret-up"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('created_at');">Created Date <i id="created_at_arrow" class="fa fa-caret-down"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('updated_at');">Updated Date <i id="updated_at_arrow" class="fa fa-caret-down"></i></a></th>
         </tr>
       </thead>
       <tbody id="tablebody"></tbody>
       <script type="text/javascript">
         var data = <%-JSON.stringify(data)%>
-        reloadDataWithSortField("count", 1)
-        function reloadDataWithSortField(sortby, order) {
+        reloadDataWithSortField("count")
+
+
+        var latestSort = {}
+        function reloadDataWithSortField(sortby) {
+          var order = 1
+          if (latestSort[sortby] && latestSort[sortby]==1) {order = -1}
+          latestSort[sortby] = order
+
           if (data[0] && data[0][sortby]) {
             data.sort(function (a, b) {
               if (a[sortby] > b[sortby]) {return (-1)*order;}
@@ -120,6 +127,15 @@
             })
           }
           reloadData()
+
+          $("#name_arrow").attr('class','fa fa-caret-down');
+          $("#count_arrow").attr('class','fa fa-caret-down');
+          $("#created_at_arrow").attr('class','fa fa-caret-down');
+          $("#updated_at_arrow").attr('class','fa fa-caret-down');
+          if (order==1) {// 내려가는거
+          } else {
+            $("#" + sortby + "_arrow").attr('class','fa fa-caret-up');
+          }
         }
         function reloadData () {
           var html = ""
