@@ -33,18 +33,18 @@ module.exports = function(passport, connect) {
   router.route('/autocomplete/:title')
     .get(function(req, res) {
       if (apiTitles.indexOf(req.params.title) >= 0 && autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]]) {
-        var title = autocompleteTitles[apiTitles.indexOf(req.params.title)]
-        autocompleteModels[title].find({}, function(err, data) {
+        var dbtitle = autocompleteTitles[apiTitles.indexOf(req.params.title)]
+        autocompleteModels[dbtitle].find({}, function(err, data) {
           if (err) {
             res.render('autocomplete.ejs', {
-              title : title,
+              title : dbtitle,
               data : null,
               error : error
             });
           } else {
             // for (var i=0; i<data.length; i++) {data[i]["created_at"] = dateFormat(data[i]["created_at"], "yyyy/mm/dd HH:MM:ss"); data[i]["updated_at"] = dateFormat(data[i]["updated_at"], "yyyy/mm/dd HH:MM:ss");}
             res.render('autocomplete.ejs', {
-              title : title,
+              title : dbtitle,
               data : data,
               error : null
             });
