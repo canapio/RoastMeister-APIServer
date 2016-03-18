@@ -1,6 +1,7 @@
 
 var express = require('express');
 var fs = require('fs');
+var dateFormat = require('dateformat');
 var sampledataobject = JSON.parse(fs.readFileSync('dist/sampledata/carlozdata.json', 'utf8'));
 // console.log(sampledataobject)
 
@@ -41,6 +42,7 @@ module.exports = function(passport, connect) {
               error : error
             });
           } else {
+            for (var i=0; i<data.length; i++) {data[i]["created_at"] = dateFormat(data[i]["created_at"], "yyyy/mm/dd HH:MM:ss"); data[i]["updated_at"] = dateFormat(data[i]["updated_at"], "yyyy/mm/dd HH:MM:ss");}
             res.render('autocomplete.ejs', {
               title : req.params.title,
               data : data,
