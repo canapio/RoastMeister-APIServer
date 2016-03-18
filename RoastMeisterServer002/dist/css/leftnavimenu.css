@@ -14,7 +14,10 @@
   margin-left: 260px;
   /*padding-left: 15px;*/
 }
-.nav-side-menu .brand {
+a.brand {
+  color: white;
+}
+.nav-side-menu div.brand {
   background-color: #23282e;
   line-height: 80px;
   display: block;
@@ -139,7 +142,7 @@
     width: 40px;
     text-align: center;
   }
-  .brand {
+  div.brand {
     text-align: left !important;
     font-size: 22px;
     padding-left: 20px;
