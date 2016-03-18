@@ -32,7 +32,6 @@ module.exports = function(passport, connect) {
   });
   router.route('/autocomplete/:title')
     .get(function(req, res) {
-      console.log(apiTitles.indexOf(req.params.title))
       if (apiTitles.indexOf(req.params.title) >= 0 && autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]]) {
         autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]].find({}, function(err, data) {
           if (err) {
