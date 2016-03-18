@@ -107,6 +107,20 @@
           <th><a>Updated Date <i class="fa fa-caret-down"></i></a></th>
         </tr>
       </thead>
+      <script type="text/javascript">
+        var data = <%-JSON.stringify(data)%>
+        var html = ""
+        for (var i=0; i<data.length; i++) {
+          html += '<tr>'
+          html += '<td>' + data[i]["_id"] + '</td>'
+          html += '<td>' + data[i]["name"] + '</td>'
+          html += '<td>' + data[i]["count"] + '</td>'
+          html += '<td>' + data[i]["created_at"] + '</td>'
+          html += '<td>' + data[i]["updated_at"] + '</td>'
+          html += '</tr>'
+        }
+        $("#tablebody").html(html)
+      </script>
       <tbody id="tablebody">
         <% for(var i=0; i<data.length; i++) {%>
            <tr>
