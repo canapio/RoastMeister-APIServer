@@ -107,12 +107,10 @@
           <th><a>Updated Date <i class="fa fa-caret-down"></i></a></th>
         </tr>
       </thead>
+      <tbody id="tablebody"></tbody>
       <script type="text/javascript">
         var data = <%-JSON.stringify(data)%>
-
-
-
-
+        reloadData()
         function reloadData(sortby) {
           var html = ""
           for (var i=0; i<data.length; i++) {
@@ -127,7 +125,6 @@
           $("#tablebody").html(html)
         }
       </script>
-      <tbody id="tablebody"></tbody>
     </table>
   </div>
 </div>
