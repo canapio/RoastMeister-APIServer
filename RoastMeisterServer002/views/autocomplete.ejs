@@ -113,12 +113,16 @@
         reloadDataWithSortField("count")
 
 
-        static var latestSort = {};
+        var latestSort = {};
         function reloadDataWithSortField(sortby) {
+          console.log("start reload data : "+ JSON.stringify(latestSort))
           var order = 1
           if (latestSort && latestSort[sortby] != null && latestSort[sortby]==1) {order = -1}
+          console.log("reloading1 reload data : "+ JSON.stringify(latestSort))
           latestSort = {}
+          console.log("reloading2 reload data : "+ JSON.stringify(latestSort))
           latestSort[sortby] = order
+          console.log("end reload data : "+ JSON.stringify(latestSort))
 
           if (data[0] && data[0][sortby]) {
             data.sort(function (a, b) {
