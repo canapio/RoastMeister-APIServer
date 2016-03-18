@@ -116,7 +116,7 @@
         var latestSort = {}
         function reloadDataWithSortField(sortby) {
           var order = 1
-          if (latestSort[sortby] && latestSort[sortby]==1) {order = -1}
+          if (latestSort[sortby] != null && latestSort[sortby]==1) {order = -1}
           latestSort[sortby] = order
 
           if (data[0] && data[0][sortby]) {
