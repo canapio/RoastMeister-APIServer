@@ -41,7 +41,6 @@ module.exports = function(passport, connect) {
               error : error
             });
           } else {
-            console.log(data)
             res.render('autocomplete.ejs', {
               title : req.params.title,
               data : data,
