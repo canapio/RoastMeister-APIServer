@@ -113,7 +113,7 @@
         reloadDataWithSortField("count")
 
 
-        latestSort = {};
+        static var latestSort = {};
         function reloadDataWithSortField(sortby) {
           var order = 1
           if (latestSort && latestSort[sortby] != null && latestSort[sortby]==1) {order = -1}
