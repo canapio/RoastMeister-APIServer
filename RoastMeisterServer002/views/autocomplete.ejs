@@ -110,10 +110,10 @@
       <tbody id="tablebody"></tbody>
       <script type="text/javascript">
         var data = <%-JSON.stringify(data)%>
-        reloadDataWithSortField("count")
-
-
+        
         var latestSort = {};
+
+        reloadDataWithSortField("count")
         function reloadDataWithSortField(sortby) {
           console.log("start reload data : "+ JSON.stringify(latestSort))
           var order = 1
