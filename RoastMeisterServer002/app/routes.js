@@ -35,11 +35,17 @@ module.exports = function(passport, connect) {
         autocompleteModels[req.params.title].find({}, function(err, data) {
           console.log("end search db")
           if (err) {
-
-          } else {
             res.render('autocomplete.ejs', {
               title : req.params.title,
-              data : data
+              data : null,
+              error : error
+            });
+          } else {
+            console.log(data)
+            res.render('autocomplete.ejs', {
+              title : req.params.title,
+              data : data,
+              error : null
             });
           }
         })
