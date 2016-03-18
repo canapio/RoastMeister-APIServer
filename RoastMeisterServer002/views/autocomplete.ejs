@@ -1,6 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
+<% var dateFormat = require('dateformat');  %>
+
 <head>
     <meta charset="utf-8">
     <meta name="robots" content="noindex">
@@ -112,8 +115,8 @@
              <td><%= data[i]["_id"] %></td>
              <td><%= data[i]["name"] %></td>
              <td><%= data[i]["count"] %></td>
-             <td><%= data[i]["created_at"] %></td>
-             <td><%= data[i]["updated_at"] %></td>
+             <td><%= dateFormat(data[i]["created_at"], "yyyy/mm/dd HH:MM") %></td>
+             <td><%= dateFormat(data[i]["updated_at"], "yyyy/mm/dd HH:MM") %></td>
            </tr>
         <% } %>
       </tbody>
