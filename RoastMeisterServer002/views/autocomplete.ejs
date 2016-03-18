@@ -115,7 +115,7 @@
 
         var latestSort = {};
 
-        reloadDataWithSortField("count")
+
         function reloadDataWithSortField(sortby) {
           var order = 1
           if (latestSort && latestSort[sortby] != null && latestSort[sortby]==1) {order = -1}
@@ -159,14 +159,29 @@
           $("#tablebody").html(html)
         }
 
-
-
-        $( document ).ready(function() {
-          var title = "<%= title %>";
-          $("#" + title + "_li").attr("class", "active collapsed active")
-
-
-        	var chart = new CanvasJS.Chart("chartContainer", {
+        function reloadChartData(data) {
+          var dataPoints = []
+          var dataPointCount = 8
+          var othersCount = 0
+          for (var i=0; i<data.length; i++) {
+            if (data[i]["count"]) {
+              if (i < dataPointCount) {
+                dataPoints.push({
+                  y: data[i]["count"],
+                  indexLabel: data[i]["name"]
+                })
+              } else {
+                othersCount += data[i]["count"]
+              }
+            }
+          }
+          if (othersCount>0) {
+            dataPoints.push({
+              y: othersCount,
+              indexLabel: "others"
+            })
+          }
+         	var chart = new CanvasJS.Chart("chartContainer", {
         		theme: "theme2",
         		data: [{
         			type: "pie",
@@ -174,18 +189,24 @@
         			toolTipContent: "{y} - #percent %",
         			yValueFormatString: "#0.#,,. Million",
         			legendText: "{indexLabel}",
-        			dataPoints: [
-        				{  y: 4181563, indexLabel: "PlayStation 3" },
-        				{  y: 2175498, indexLabel: "Wii" },
-        				{  y: 3125844, indexLabel: "Xbox 360" },
-        				{  y: 1176121, indexLabel: "Nintendo DS"},
-        				{  y: 1727161, indexLabel: "PSP" },
-        				{  y: 4303364, indexLabel: "Nintendo 3DS"},
-        				{  y: 1717786, indexLabel: "PS Vita"}
-        			]
+        			dataPoints: dataPoints
         		}]
         	});
         	chart.render();
+        }
+
+        $( document ).ready(function() {
+
+          // 왼쪽 메뉴 활성
+          var title = "<%= title %>";
+          $("#" + title + "_li").attr("class", "active collapsed active")
+
+          // data를 정렬 및 화면에 뿌림
+          reloadDataWithSortField("count")
+
+          // data를 기반으로 상단의 차트 표시
+          reloadChartData(data)
+
         });
 
         </script>
