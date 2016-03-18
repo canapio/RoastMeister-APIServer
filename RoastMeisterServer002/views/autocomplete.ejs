@@ -133,10 +133,15 @@
           $("#count_arrow").attr('class','fa fa-caret-down');
           $("#created_at_arrow").attr('class','fa fa-caret-down');
           $("#updated_at_arrow").attr('class','fa fa-caret-down');
+          $("#name_arrow").attr('style','opacity: 0.5;');
+          $("#count_arrow").attr('style','opacity: 0.5;');
+          $("#created_at_arrow").attr('style','opacity: 0.5;');
+          $("#updated_at_arrow").attr('style','opacity: 0.5;');
           if (order==1) {
           } else {
             $("#" + sortby + "_arrow").attr('class','fa fa-caret-up');
           }
+          $("#" + sortby + "_arrow").attr('style','opacity: 1;');
         }
         function reloadData () {
           var html = ""
