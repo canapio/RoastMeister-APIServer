@@ -101,10 +101,10 @@
       <thead>
         <tr>
           <th>#</th>
-          <th><a>Name <i class="fa fa-caret-down"></i></a></th>
-          <th><a>Count <i class="fa fa-caret-up"></i></a></th>
-          <th><a>Created Date <i class="fa fa-caret-down"></i></a></th>
-          <th><a>Updated Date <i class="fa fa-caret-down"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('name', 1);">Name <i class="fa fa-caret-down"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('count', 1);">Count <i class="fa fa-caret-up"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('created_at', 1);">Created Date <i class="fa fa-caret-down"></i></a></th>
+          <th><a onclick="reloadDataWithSortField('updated_at', 1);">Updated Date <i class="fa fa-caret-down"></i></a></th>
         </tr>
       </thead>
       <tbody id="tablebody"></tbody>
@@ -125,7 +125,7 @@
           var html = ""
           for (var i=0; i<data.length; i++) {
             html += '<tr>'
-            html += '<td>' + String(i) + '</td>'
+            html += '<td>' + String(i+1)  + '</td>'
             html += '<td>' + data[i]["name"] + '</td>'
             html += '<td>' + data[i]["count"] + '</td>'
             html += '<td>' + data[i]["created_at"] + '</td>'
