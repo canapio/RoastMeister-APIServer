@@ -11,6 +11,7 @@ module.exports = function(passport, connect) {
   var app = express()
   var router = express.Router();
 
+  var apiTitles = ["countrys", "province-district", "variety", "machine", "faul"]
   var autocompleteTitles = ["nation", "farm", "beankind", "machine", "faul"]
   var autocompleteModelMaker =   require("../app/models/autocomplete.js")
   var autocompleteModels = {}
@@ -31,10 +32,8 @@ module.exports = function(passport, connect) {
   });
   router.route('/autocomplete/:title')
     .get(function(req, res) {
-      if (autocompleteModels[req.params.title]) {
-        console.log("before search db")
-        autocompleteModels[req.params.title].find({}, function(err, data) {
-          console.log("end search db")
+      if (apiTitles.indexOf(req.params.title) >= 0 && autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]]) {
+        autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]].find({}, function(err, data) {
           if (err) {
             res.render('autocomplete.ejs', {
               title : req.params.title,
@@ -42,7 +41,7 @@ module.exports = function(passport, connect) {
               error : error
             });
           } else {
-            for (var i=0; i<data.length; i++) {data[i]["created_at"] = dateFormat(data[i]["created_at"], "yyyy/mm/dd HH:MM:ss"); data[i]["updated_at"] = dateFormat(data[i]["updated_at"], "yyyy/mm/dd HH:MM:ss");}
+            // for (var i=0; i<data.length; i++) {data[i]["created_at"] = dateFormat(data[i]["created_at"], "yyyy/mm/dd HH:MM:ss"); data[i]["updated_at"] = dateFormat(data[i]["updated_at"], "yyyy/mm/dd HH:MM:ss");}
             res.render('autocomplete.ejs', {
               title : req.params.title,
               data : data,
