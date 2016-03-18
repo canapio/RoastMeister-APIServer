@@ -113,11 +113,12 @@
         reloadDataWithSortField("count")
 
 
-        var latestSort = {}
+        var latestSort = {};
         function reloadDataWithSortField(sortby) {
           var order = 1
           if (latestSort && latestSort[sortby] != null && latestSort[sortby]==1) {order = -1}
-          latestSort = {sortby: order}
+          latestSort = {}
+          latestSort[sortby] = order
 
           if (data[0] && data[0][sortby]) {
             data.sort(function (a, b) {
@@ -132,7 +133,7 @@
           $("#count_arrow").attr('class','fa fa-caret-down');
           $("#created_at_arrow").attr('class','fa fa-caret-down');
           $("#updated_at_arrow").attr('class','fa fa-caret-down');
-          if (order==1) {// 내려가는거
+          if (order==1) {
           } else {
             $("#" + sortby + "_arrow").attr('class','fa fa-caret-up');
           }
