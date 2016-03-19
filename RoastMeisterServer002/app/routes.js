@@ -81,15 +81,15 @@ module.exports = function(passport, connect) {
       }
     })
   })
-  .delete(function(req, res) {
-    userModel.remove({}, function(err) {
-      if (err) {
-
-      } else {
-        res.json({})
-      }
-    })
-  })
+  // .delete(function(req, res) {
+  //   userModel.remove({}, function(err) {
+  //     if (err) {
+  //       res.json({})
+  //     } else {
+  //       res.json({})
+  //     }
+  //   })
+  // })
 
 
 

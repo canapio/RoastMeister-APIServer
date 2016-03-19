@@ -73,9 +73,9 @@
 
 
 <div class="main-body main">
-  <div class="" style="float: right; margin-top: 15px;">
+  <!-- <div class="" style="float: right; margin-top: 15px;">
     <button type="button" class="btn btn-danger" onclick="deleteUsers();">유저 전체 삭제</button>
-  </div>
+  </div> -->
 
   <h2 class="sub-header">Section title</h2>
   <div class="table-responsive">
@@ -195,15 +195,7 @@
     }
     $("#tablebody").html(html)
   }
-  function deleteUsers() {
-    $.ajax({
-        url: '/users',
-        type: 'DELETE',
-        success: function(result) {
-            // Do something with the result
-            location.reload();
-        }
-    });
+
   }
 
   </script>
