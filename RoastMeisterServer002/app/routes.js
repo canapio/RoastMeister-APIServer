@@ -19,6 +19,8 @@ module.exports = function(passport, connect) {
     autocompleteModels[autocompleteTitles[i]] = autocompleteModelMaker(connect, autocompleteTitles[i])
   }
 
+  var userModel = require("../app/models/user.js")
+
   // LOGIN ==============================
   // router.get('/login', isLoggedIn, function(req, res) {
   //   res.render('login.ejs');
@@ -39,8 +41,7 @@ module.exports = function(passport, connect) {
       sampledata : sampledataobject
     });
   });
-  router.route('/autocomplete/:title')
-    .get(isLoggedIn, function(req, res) {
+  router.route('/autocomplete/:title').get(isLoggedIn, function(req, res) {
       if (apiTitles.indexOf(req.params.title) >= 0 && autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]]) {
         var dbtitle = autocompleteTitles[apiTitles.indexOf(req.params.title)]
         autocompleteModels[dbtitle].find({}, function(err, data) {
@@ -62,9 +63,23 @@ module.exports = function(passport, connect) {
       } else {
         res.render('page404.ejs')
       }
+  });
 
-    });
-
+  router.route('/users').get(isLoggedIn, function(req, res) {
+    userModel.find({}, function(err, data) {
+      if (err) {
+        res.render('users.ejs', {
+          data : null,
+          error : error
+        });
+      } else {
+        res.render('users.ejs', {
+          data : data,
+          error : null
+        });
+      }
+    })
+  })
 
 
 

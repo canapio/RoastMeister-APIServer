@@ -13,28 +13,36 @@ var userSchema = mongoose.Schema({
         id           : String,
         token        : String,
         email        : String,
-        name         : String
+        name         : String,
+        photourl     : String,
     },
     twitter          : {
         id           : String,
         token        : String,
         displayName  : String,
-        username     : String
+        username     : String,
+        photourl     : String,
     },
     google           : {
         id           : String,
         token        : String,
         email        : String,
-        name         : String
+        name         : String,
+        photourl     : String,
     },
-
-
-
-
-
-    
-
+    group            : String,
+    created_at       : Date,
+    updated_at       : Date,
 });
+
+userSchema.pre('save', function(next) {
+    var currentDate = new Date()
+    this.updated_at = currentDate
+    if (!this.created_at) {
+      this.created_at = currentDate
+    }
+    next()
+})
 
 // generating a hash
 userSchema.methods.generateHash = function(password) {
