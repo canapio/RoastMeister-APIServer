@@ -20,9 +20,9 @@ module.exports = function(passport, connect) {
   }
 
   // LOGIN ==============================
-  router.get('/login', function(req, res) {
-    res.render('login.ejs');
-  });
+  // router.get('/login', isLoggedIn, function(req, res) {
+  //   res.render('login.ejs');
+  // });
   // LOGOUT ==============================
   router.get('/logout', function(req, res) {
       req.logout();
@@ -40,7 +40,7 @@ module.exports = function(passport, connect) {
     });
   });
   router.route('/autocomplete/:title')
-    .get(function(req, res) {
+    .get(isLoggedIn, function(req, res) {
       if (apiTitles.indexOf(req.params.title) >= 0 && autocompleteModels[autocompleteTitles[apiTitles.indexOf(req.params.title)]]) {
         var dbtitle = autocompleteTitles[apiTitles.indexOf(req.params.title)]
         autocompleteModels[dbtitle].find({}, function(err, data) {
@@ -78,7 +78,7 @@ module.exports = function(passport, connect) {
     // locally --------------------------------
         // LOGIN ===============================
         // show the login form
-        app.get('/login', function(req, res) {
+        app.get('/login', isLoggedIn, function(req, res) {
             res.render('login.ejs', { message: req.flash('loginMessage') });
         });
 
@@ -242,8 +242,28 @@ module.exports = function(passport, connect) {
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
+    if (req.isAuthenticated()) {
+        if (req.url.indexOf("/login") != -1) {
+          // 로그인 했는데 로그인 페이지로 가고싶어하면, 메인페이지로 띄우기
+          res.redirect('/');
+        } else {
+          if (req.url=="/" && req.session.returnTo) {
+            var returnTo = req.session.returnTo
+            delete req.session.returnTo;
+            res.redirect(returnTo || '/');
+          } else {
+            return next();
+          }
+        }
+    } else {
+      // 로그인 안했을시에만 로그인 페이지로가기
+      if (req.url.indexOf("/login") != -1) {
+        next()
+      } else {
+        req.session.returnTo = req.path;
+        res.redirect('/login');
+      }
+    }
 
-    res.redirect('/login');
+
 }
