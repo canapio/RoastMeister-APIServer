@@ -108,7 +108,7 @@
       created_at      : origindata[i]["created_at"],
       updated_at      : origindata[i]["updated_at"],
     };
-    if (origindata[i].facebook.token) {
+    if (origindata[i].facebook && origindata[i].facebook.token) {
       // facebook
       user.social          = "facebook";
       user.social_id       = origindata[i].facebook.id;
@@ -116,7 +116,7 @@
       user.social_name     = origindata[i].facebook.name;
       user.social_email    = origindata[i].facebook.email;
       user.social_photourl = origindata[i].facebook.photourl;
-    } else if (origindata[i].twitter.token) {
+    } else if (origindata[i].twitter && origindata[i].twitter.token) {
       // twitter
       user.social          = "twitter";
       user.social_id       = origindata[i].twitter.id;
@@ -124,7 +124,7 @@
       user.social_name     = origindata[i].twitter.displayName;
       user.social_email    = "-";
       user.social_photourl = origindata[i].twitter.photourl;
-    } else if (origindata[i].google.token) {
+    } else if (origindata[i].google && origindata[i].google.token) {
       // google
       user.social          = "google+";
       user.social_id       = origindata[i].google.id;
