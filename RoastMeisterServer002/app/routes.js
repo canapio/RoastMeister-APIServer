@@ -65,7 +65,8 @@ module.exports = function(passport, connect) {
       }
   });
 
-  router.route('/users').get(isLoggedIn, function(req, res) {
+  router.route('/users')
+  .get(isLoggedIn, function(req, res) {
     userModel.find({}, function(err, data) {
       if (err) {
         res.render('users.ejs', {
@@ -77,6 +78,15 @@ module.exports = function(passport, connect) {
           data : data,
           error : null
         });
+      }
+    })
+  })
+  .delete(function(req, res) {
+    userModel.remove({}, function(err) {
+      if (err) {
+
+      } else {
+        res.json({})
       }
     })
   })

@@ -169,7 +169,7 @@ module.exports = function(passport) {
                             user.facebook.token = token;
                             user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                             user.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                            user.facebook.photourl = profile.picture.data.url || '';
+                            user.facebook.photourl = profile.photos[0].value || '';
 
                             user.save(function(err) {
                                 if (err)
@@ -181,7 +181,6 @@ module.exports = function(passport) {
 
                         return done(null, user); // user found, return that user
                     } else {
-                        console.log(JSON.stringify(profile))
                         // if there is no user, create them
                         var newUser            = new User();
 
@@ -208,7 +207,7 @@ module.exports = function(passport) {
                 user.facebook.token = token;
                 user.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                 user.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                user.facebook.photourl = profile.picture.data.url || '';
+                user.facebook.photourl = profile.photos[0].value || '';
 
                 user.save(function(err) {
                     if (err)
