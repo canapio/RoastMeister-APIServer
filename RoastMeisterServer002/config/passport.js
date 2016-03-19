@@ -181,6 +181,7 @@ module.exports = function(passport) {
 
                         return done(null, user); // user found, return that user
                     } else {
+                        console.log(JSON.stringify(profile))
                         // if there is no user, create them
                         var newUser            = new User();
 
