@@ -188,7 +188,7 @@ module.exports = function(passport) {
                         newUser.facebook.token = token;
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                         newUser.facebook.email = (profile.emails[0].value || '').toLowerCase();
-                        user.facebook.photourl = profile.picture.data.url || '';
+                        newUser.facebook.photourl = profile.picture.data.url || '';
 
                         newUser.save(function(err) {
                             if (err)
@@ -268,7 +268,7 @@ module.exports = function(passport) {
                         newUser.twitter.token       = token;
                         newUser.twitter.username    = profile.username;
                         newUser.twitter.displayName = profile.displayName;
-                        user.twitter.photourl    = profile.profile_image_url;
+                        newUser.twitter.photourl    = profile.profile_image_url;
 
                         newUser.save(function(err) {
                             if (err)
