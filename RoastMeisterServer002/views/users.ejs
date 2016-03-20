@@ -57,7 +57,7 @@
               %>
               <a href="/profile"><li>내 프로필
                 <% if (photourl) { %>
-                <span style="float: right; text-align: center;"><img src="<%= photourl %>" class="center-cropped img-circle" style="width: 68%; height: 68%;"></span>
+                <span style="float: right; text-align: center;"><div src="" class="center-cropped img-circle" style="background: url(<%= photourl %>) 50% 50% no-repeat; width: 68%; height: 68%;"></div></span>
                 <% } else if (user.local && user.local.email == "admin") { %>
                 <span style="float: right; text-align: center; font-size: 13px; margin-right: 10px;"><b>Admin</b></span>
                 <% } %>
@@ -212,7 +212,7 @@
     for (var i=0; i<data.length; i++) {
       var imgtag = ''
       if (data[i]["social_photourl"]) {
-        imgtag = '<img class="center-cropped" src="' + data[i]["social_photourl"] + '" />'
+        imgtag = '<div class="center-cropped" style="background: url(' + data[i]["social_photourl"] + ') 50% 50% no-repeat;"></div>'
       } else if (data[i]["social_name"].toLowerCase() == "admin" && data[i]["social_email"].toLowerCase() == "admin") {
         imgtag = "<span style='font-size: 18px;'><b>Admin</b></span>"
       }
