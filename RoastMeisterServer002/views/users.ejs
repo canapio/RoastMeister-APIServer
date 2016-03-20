@@ -283,15 +283,15 @@
               html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'
               html += '<strong>Failed!</strong> UPDATE :: id:' + data[index]["_id"] + ', group:' + value
               html += '</div>'
-              $("#alertdiv").html(html)
+
             } else {
               html += '<div class="alert alert-success alert-dismissible fade in" role="alert">'
               html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'
               html += '<strong>Success!</strong> UPDATE :: id:' + data[index]["_id"] + ', group:' + value
               html += '</div>'
-              $("#alertdiv").html(html)
+
             }
-            console.log(JSON.stringify(result))
+            $("#alertdiv").html(html)
         },
         error:function(request,status,error){
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
