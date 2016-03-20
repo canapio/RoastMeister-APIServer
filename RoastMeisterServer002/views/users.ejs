@@ -57,7 +57,7 @@
               %>
               <a href="/profile"><li>내 프로필
                 <% if (photourl) { %>
-                <span style="float: right; text-align: center;"><div src="" class="center-cropped img-circle" style="background: url(<%= photourl %>) 50% 50% no-repeat; width: 68%; height: 68%;"></div></span>
+                <div style="float: right; text-align: center;"><div class="center-cropped img-circle" style="background-image: url(<%= photourl %>); width: 38px; height: 38px; margin: 6px 6px; vertical-align: middle;"></div></div>
                 <% } else if (user.local && user.local.email == "admin") { %>
                 <span style="float: right; text-align: center; font-size: 13px; margin-right: 10px;"><b>Admin</b></span>
                 <% } %>
