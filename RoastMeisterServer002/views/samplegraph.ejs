@@ -41,7 +41,6 @@
         <ul id="menu-content" class="menu-content collapse out">
           <%
             var photourl = null;
-            console.log(user.facebook.photourl)
             if (user.facebook && user.facebook.photourl) {
               photourl = user.facebook.photourl
             } else if (user.twitter && user.twitter.photourl) {
@@ -67,11 +66,11 @@
               <a href="/autocomplete/machines"><li id="machine_li">로스팅 머신</li></a>
               <a href="/autocomplete/fauls"><li id="faul_li">연료</li></a>
           </ul>
-          <a><li data-toggle="collapse" data-target="#service" class="collapsed">
+          <a><li data-toggle="collapse" data-target="#service" class="active collapsed active">
             로스팅 자료<span class="arrow"></span>
           </li></a>
-          <ul class="sub-menu collapse" id="service">
-            <a href="/roasting/sampledata1"><li>Sample Data 1</li></a>
+          <ul class="sub-menu collapse in" id="service">
+            <a href="/roasting/sampledata1"><li class="active collapsed active">Sample Data 1</li></a>
             <li>Sample Data 2</li>
             <li>Sample Data 3</li>
           </ul>
@@ -91,25 +90,106 @@
 html, body {
   /*height: 100%;*/
 }
-div.index {
-
-  background: url("http://s30.postimg.org/uvcoj0noh/coffee_bg.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  top: 0px;
-  z-index: 0;
-  position: absolute;
-  opacity: 0.2;
-}
 </style>
-<div class="main-body index">
+<div class="main-body main">
+  <h1 class="page-header">Carloz Sample Data</h1>
+  <div style="padding: 8px 0px; ">
+    <div id="chartContainer" style="height: 440px; width: 100%;">
+    </div>
+  </div>
 
 
+  <script type="text/javascript" src="../dist/js/canvasjs.min.js"></script></head>
+  <script type="text/javascript">
+  window.onload = function () {
+    // var metadata = sampledata["metadata"]
+    var tempdataArray = <%-JSON.stringify(sampledata["tempdataArray"])%>
+    // var coffeeingdataArray = sampledata["coffeeingdataArray"]
+
+    // console.log(JSON.stringify(tempdataArray))
+
+    var drumtempDataPoints = []
+    var potentialtempDataPoints = []
+    var airtempDataPoints = []
+
+    tempdataArray.sort(function (a,b) {
+      if (a["time"] < b["time"])
+        return -1;
+      else if (a["time"] > b["time"])
+        return 1;
+      else
+        return 0;
+    })
+
+    for (var i=0; i<tempdataArray.length; i++) {
+      // console.log(tempdataArray[i]["drumtemp"])
+      var time = tempdataArray[i]["time"]
+      if (time == null || time == undefined) continue;
+      var timesep = time.split(":")
+      var min = 0
+      var sec = 0
+      if (timesep.length>0) min = parseInt(timesep[0])
+      if (timesep.length>1) sec = parseInt(timesep[1])
+
+      var timemiliseconde = (min*60 + sec) * 1000
+      var date = new Date(timemiliseconde)
+      if (tempdataArray[i]["drumtemp"] && tempdataArray[i]["drumtemp"] != 0) {
+        var temp = parseFloat(tempdataArray[i]["drumtemp"])
+        drumtempDataPoints.push({x: date,y: temp})
+      }
+      if (tempdataArray[i]["potentialtemp"] && tempdataArray[i]["potentialtemp"] != 0) {
+        var temp = parseFloat(tempdataArray[i]["potentialtemp"])
+        potentialtempDataPoints.push({x: date,y: temp})
+      }
+      if (tempdataArray[i]["airtemp"] && tempdataArray[i]["airtemp"] != 0) {
+        var temp = parseFloat(tempdataArray[i]["airtemp"])
+        airtempDataPoints.push({x: date,y: temp})
+      }
+    }
+
+    // console.log(sampledata)
+    var axisColor = "#444444"
+    var chart = new CanvasJS.Chart("chartContainer", {
+      // title:{
+      // text: "Carloz Sample Data "
+      // },
+      // backgroundColor: "#16212F",
+      axisX:{
+        valueFormatString: "m:s",
+        gridColor: axisColor,
+        lineColor: axisColor,
+        tickColor: axisColor,
+        labelFontSize: 14,
+        labelFontFamily: "Helvetica",
+        // interlacedColor: "#555555"
+      },
+      axisY:{
+        // valueFormatString: "mm:ss",
+        gridColor: axisColor,
+        lineColor: axisColor,
+        tickColor: axisColor,
+        labelFontSize: 14,
+        labelFontFamily: "Helvetica",
+        // interlacedColor: "#555555"
+      },
+      data: [{
+        type: "spline",
+        color: "#FD555B",
+        dataPoints: drumtempDataPoints
+      }, {
+        type: "spline",
+        color: "#2866C5",
+        dataPoints: potentialtempDataPoints
+      }, {
+        type: "spline",
+        color: "#2DBE85",
+        dataPoints: airtempDataPoints
+      }]
+    });
+
+    chart.render();
+  }
+  </script>
 </div>
 </body>
 <script src="../dist/js/bootstrap.min.js"></script>

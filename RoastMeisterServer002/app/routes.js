@@ -109,6 +109,13 @@ module.exports = function(passport, connect) {
     })
   })
 
+  router.get('/roasting/sampledata1', function(req, res) {
+    res.render('samplegraph.ejs', {
+      user : req.user,
+      sampledata : sampledataobject
+    });
+  })
+
 
 
 
