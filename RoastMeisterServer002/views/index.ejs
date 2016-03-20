@@ -52,7 +52,7 @@
           %>
           <a href="/profile"><li>내 프로필
             <% if (photourl) { %>
-            <span style="float: right; text-align: center;"><div class="center-cropped img-circle" style="background-image: url(<%= photourl %>); width: 38px; height: 38px;"></div></span>
+            <div style="float: right; text-align: center;"><div class="center-cropped img-circle" style="background-image: url(<%= photourl %>); width: 38px; height: 38px; vertical-align: middle;"></div></div>
             <% } %>
           </li></a>
           <a><li class="collapsed" data-toggle="collapse" data-target="#userside">
