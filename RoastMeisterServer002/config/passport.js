@@ -332,7 +332,7 @@ module.exports = function(passport) {
                             user.google.token = token;
                             user.google.name  = profile.displayName;
                             user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
-                            user.google.photourl = profile.photos[0].value || '';
+                            user.google.photourl = profile._json.picture || '';
 
                             user.save(function(err) {
                                 if (err)
@@ -350,7 +350,7 @@ module.exports = function(passport) {
                         newUser.google.token = token;
                         newUser.google.name  = profile.displayName;
                         newUser.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
-                        newUser.google.photourl = profile.photos[0].value || '';
+                        newUser.google.photourl = profile._json.picture || '';
 
                         newUser.save(function(err) {
                             if (err)
@@ -369,7 +369,7 @@ module.exports = function(passport) {
                 user.google.token = token;
                 user.google.name  = profile.displayName;
                 user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
-                user.google.photourl = profile.photos[0].value || '';
+                user.google.photourl = profile._json.picture || '';
 
                 user.save(function(err) {
                     if (err)
