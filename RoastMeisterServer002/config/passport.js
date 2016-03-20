@@ -234,6 +234,7 @@ module.exports = function(passport) {
     },
     function(req, token, tokenSecret, profile, done) {
         // asynchronous
+
         process.nextTick(function() {
 
             // check if the user is already logged in
@@ -249,7 +250,7 @@ module.exports = function(passport) {
                             user.twitter.token       = token;
                             user.twitter.username    = profile.username;
                             user.twitter.displayName = profile.displayName;
-                            user.twitter.photourl    = profile.profile_image_url;
+                            user.twitter.photourl    = profile.photos[0].value || '';
 
                             user.save(function(err) {
                                 if (err)
@@ -268,7 +269,7 @@ module.exports = function(passport) {
                         newUser.twitter.token       = token;
                         newUser.twitter.username    = profile.username;
                         newUser.twitter.displayName = profile.displayName;
-                        newUser.twitter.photourl    = profile.profile_image_url;
+                        newUser.twitter.photourl    = profile.photos[0].value || '';
 
                         newUser.save(function(err) {
                             if (err)
@@ -287,7 +288,7 @@ module.exports = function(passport) {
                 user.twitter.token       = token;
                 user.twitter.username    = profile.username;
                 user.twitter.displayName = profile.displayName;
-                user.twitter.photourl    = profile.profile_image_url;
+                user.twitter.photourl    = profile.photos[0].value || '';
 
                 user.save(function(err) {
                     if (err)
