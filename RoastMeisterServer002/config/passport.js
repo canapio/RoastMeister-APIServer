@@ -314,7 +314,7 @@ module.exports = function(passport) {
 
     },
     function(req, token, refreshToken, profile, done) {
-
+      console.log(profile)
         // asynchronous
         process.nextTick(function() {
 
@@ -333,7 +333,7 @@ module.exports = function(passport) {
                             user.google.name  = profile.displayName;
                             user.google.email = (profile.emails[0].value || '').toLowerCase(); // pull the first email
                             user.google.photourl = profile.photos[0].value || '';
-                            
+
                             user.save(function(err) {
                                 if (err)
                                     return done(err);
