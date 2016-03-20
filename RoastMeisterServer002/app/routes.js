@@ -76,7 +76,7 @@ module.exports = function(passport, connect) {
   });
 
   router.route('/users')
-  .get(isLoggedIn, function(req, res) {
+  .get(isLoggedIn, checkGroup("Monitor"), function(req, res) {
     userModel.find({}, function(err, data) {
       if (err) {
         res.render('users.ejs', {
@@ -301,6 +301,15 @@ function isLoggedIn(req, res, next) {
         res.redirect('/login');
       }
     }
-
-
+}
+function checkGroup(group) {
+  return function (req, res, next) {
+    if (req.user && req.user.group) {
+      if (req.user.canGroup(group)) {
+        next()
+      } else {
+        res.render('page401.ejs')
+      }
+    }
+  }
 }
