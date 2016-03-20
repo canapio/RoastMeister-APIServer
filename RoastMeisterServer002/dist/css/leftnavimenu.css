@@ -11,11 +11,11 @@
   min-height: 100%;
   min-width: 100%;
   /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";*/
   /* IE 5-7 */
-  filter: alpha(opacity=0);
+  /*filter: alpha(opacity=0);*/
   /* modern browsers */
-  opacity: 0;
+  /*opacity: 0;*/
 }
 .nav-side-menu {
   overflow: auto;

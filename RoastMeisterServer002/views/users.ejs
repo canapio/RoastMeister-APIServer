@@ -212,7 +212,7 @@
     for (var i=0; i<data.length; i++) {
       var imgtag = ''
       if (data[i]["social_photourl"]) {
-        imgtag = '<div class="center-cropped img-circle" style="background-image: url("' + data[i]["social_photourl"] + '");"><img src="' + data[i]["social_photourl"] + '" /></div>'
+        imgtag = '<div class="center-cropped img-circle"><img src="' + data[i]["social_photourl"] + '" /></div>'
       } else if (data[i]["social_name"].toLowerCase() == "admin" && data[i]["social_email"].toLowerCase() == "admin") {
         imgtag = "<span style='font-size: 18px;'><b>Admin</b></span>"
       }
