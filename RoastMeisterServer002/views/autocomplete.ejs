@@ -44,27 +44,46 @@
         <div class="menu-list">
 
             <ul id="menu-content" class="menu-content collapse out">
+              <%
+                var photourl = null;
+                console.log(user.facebook.photourl)
+                if (user.facebook && user.facebook.photourl) {
+                  photourl = user.facebook.photourl
+                } else if (user.twitter && user.twitter.photourl) {
+                  photourl = user.twitter.photourl
+                } else if (user.google && user.google.photourl) {
+                  photourl = user.google.photourl
+                }
+              %>
+              <a href="/profile"><li>내 프로필
+                <% if (photourl) { %>
+                <span style="float: right; text-align: center;"><img src="<%= photourl %>" class="img-circle" style="width: 65%;"></span>
+                <% } %>
+              </li></a>
+              <a><li class="active collapsed active" data-toggle="collapse" data-target="#userside">
+                자동완성<span class="arrow"></span>
+              </li></a>
+              <ul class="sub-menu collapse in" id="userside">
+                  <a href="/autocomplete/countrys"><li id="nation_li">국가명</li></a>
+                  <a href="/autocomplete/provinces-districts"><li id="farm_li">농장-지역명</li></a>
+                  <a href="/autocomplete/varieties"><li id="beankind_li">품종멱</li></a>
+                  <a href="/autocomplete/machines"><li id="machine_li">로스팅 머신</li></a>
+                  <a href="/autocomplete/fauls"><li id="faul_li">연료</li></a>
+              </ul>
+              <a href="#"><li data-toggle="collapse" data-target="#service" class="collapsed">
+                로스팅 자료<span class="arrow"></span>
+              </li></a>
+              <ul class="sub-menu collapse" id="service">
+                <li>New Service 1</li>
+                <li>New Service 2</li>
+                <li>New Service 3</li>
+              </ul>
 
-                <a><li class="active collapsed active" data-toggle="collapse" data-target="#userside">
-                  자동완성<span class="arrow"></span>
-                </li></a>
-                <ul class="sub-menu collapse in" id="userside">
-                    <a href="/autocomplete/countrys"><li id="nation_li">국가명</li></a>
-                    <a href="/autocomplete/provinces-districts"><li id="farm_li">농장-지역명</li></a>
-                    <a href="/autocomplete/varieties"><li id="beankind_li">품종멱</li></a>
-                    <a href="/autocomplete/machines"><li id="machine_li">로스팅 머신</li></a>
-                    <a href="/autocomplete/fauls"><li id="faul_li">연료</li></a>
-                </ul>
-                <a href="#"><li data-toggle="collapse" data-target="#service" class="collapsed">
-                  로스팅 자료<span class="arrow"></span>
-                </li></a>
-                <ul class="sub-menu collapse" id="service">
-                  <li>New Service 1</li>
-                  <li>New Service 2</li>
-                  <li>New Service 3</li>
-                </ul>
-                 <a href="/users"><li>사용자</li></a>
-                 <a href="/profile"><li>내 프로필</li></a>
+              <% if (user.canGroup("Monitor")) { %>
+              <a href="/users"><li>사용자</li></a>
+              <% } %>
+
+
             </ul>
      </div>
 </div>

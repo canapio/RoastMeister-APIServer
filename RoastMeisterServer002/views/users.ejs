@@ -32,6 +32,7 @@
           // window.parent.postMessage( iframe_height, 'http://bootsnipp.com');
         });
     </script>
+
 </head>
 <body>
 
@@ -43,7 +44,24 @@
         <div class="menu-list">
 
             <ul id="menu-content" class="menu-content collapse out">
-
+              <%
+                var photourl = null;
+                if (user.facebook && user.facebook.photourl) {
+                  photourl = user.facebook.photourl
+                } else if (user.twitter && user.twitter.photourl) {
+                  photourl = user.twitter.photourl
+                } else if (user.google && user.google.photourl) {
+                  photourl = user.google.photourl
+                }
+                console.log("user.local.name: " + user.local.email)
+              %>
+              <a href="/profile"><li>내 프로필
+                <% if (photourl) { %>
+                <span style="float: right; text-align: center;"><img src="<%= photourl %>" class="img-circle" style="width: 65%;"></span>
+                <% } else if (user.local && user.local.email == "admin") { %>
+                <span style="float: right; text-align: center; font-size: 13px; margin-right: 10px;"><b>Admin</b></span>
+                <% } %>
+              </li></a>
               <a><li class="collapsed" data-toggle="collapse" data-target="#userside">
                 자동완성<span class="arrow"></span>
               </li></a>
@@ -63,8 +81,10 @@
                   <li>New Service 2</li>
                   <li>New Service 3</li>
                 </ul>
-                 <a href="/users"><li class="active collapsed active">사용자</li></a>
-                 <a href="/profile"><li>내 프로필</li></a>
+                <% if (user.canGroup("Monitor")) { %>
+                <a href="/users"><li class="active collapsed active">사용자</li></a>
+                <% } %>
+
             </ul>
      </div>
 </div>
@@ -73,24 +93,26 @@
 
 
 <div class="main-body main">
-  <!-- <div class="" style="float: right; margin-top: 15px;">
-    <button type="button" class="btn btn-danger" onclick="deleteUsers();">유저 전체 삭제</button>
-  </div> -->
+  <% if (user.group == "Admin") { %>
+  <div class="" style="float: right; margin-top: 15px;">
+    <button type="button" class="btn btn-danger" onclick="deleteUsers();">사용자 전체 삭제</button>
+  </div>
+  <% } %>
 
-  <h2 class="sub-header">Section title</h2>
+  <h2 class="sub-header">모든 사용자</h2>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th> </th>
-          <th><a onclick="reloadDataWithSortField('name');">사용자 이름 <i id="name_arrow" class="fa fa-caret-down"></i></a></th>
-          <th><a onclick="reloadDataWithSortField('social');">SNS 연결 <i id="social_arrow" class="fa fa-caret-up"></i></a></th>
-          <th><a onclick="reloadDataWithSortField('email');">이메일 <i id="email_arrow" class="fa fa-caret-up"></i></a></th>
-          <th>토큰</th>
-          <th><a onclick="reloadDataWithSortField('group');">권한 <i id="group_arrow" class="fa fa-caret-up"></i></a></th>
+          <th style="vertical-align: middle; text-align: center;">사진</th>
+          <th style="vertical-align: middle;"><a onclick="reloadDataWithSortField('name');">사용자 이름 <i id="name_arrow" class="fa fa-caret-down"></i></a><br>
+          <a onclick="reloadDataWithSortField('email');">이메일 <i id="email_arrow" class="fa fa-caret-up"></i></a></th>
+          <th style="vertical-align: middle;"><a onclick="reloadDataWithSortField('social');">SNS 연결 <i id="social_arrow" class="fa fa-caret-up"></i></a><br>
+          토큰</th>
+          <th style="vertical-align: middle;"><a onclick="reloadDataWithSortField('group');">권한 <i id="group_arrow" class="fa fa-caret-up"></i></a></th>
 
-          <th><a onclick="reloadDataWithSortField('created_at');">생성 날짜 <i id="created_at_arrow" class="fa fa-caret-down"></i></a></th>
-          <th><a onclick="reloadDataWithSortField('updated_at');">갱신 날짜 <i id="updated_at_arrow" class="fa fa-caret-down"></i></a></th>
+          <th style="vertical-align: middle;"><a onclick="reloadDataWithSortField('created_at');">생성 날짜 <i id="created_at_arrow" class="fa fa-caret-down"></i></a><br>
+          <a onclick="reloadDataWithSortField('updated_at');">갱신 날짜 <i id="updated_at_arrow" class="fa fa-caret-down"></i></a></th>
         </tr>
       </thead>
       <tbody id="tablebody"></tbody>
@@ -113,7 +135,7 @@
     };
     if (origindata[i].facebook && origindata[i].facebook.token) {
       // facebook
-      user.social          = "facebook";
+      user.social          = "Facebook";
       user.social_id       = origindata[i].facebook.id;
       user.social_token    = origindata[i].facebook.token;
       user.social_name     = origindata[i].facebook.name;
@@ -121,7 +143,7 @@
       user.social_photourl = origindata[i].facebook.photourl;
     } else if (origindata[i].twitter && origindata[i].twitter.token) {
       // twitter
-      user.social          = "twitter";
+      user.social          = "Twitter";
       user.social_id       = origindata[i].twitter.id;
       user.social_token    = origindata[i].twitter.token;
       user.social_name     = origindata[i].twitter.displayName;
@@ -129,12 +151,20 @@
       user.social_photourl = origindata[i].twitter.photourl;
     } else if (origindata[i].google && origindata[i].google.token) {
       // google
-      user.social          = "google+";
+      user.social          = "Google+";
       user.social_id       = origindata[i].google.id;
       user.social_token    = origindata[i].google.token;
       user.social_name     = origindata[i].google.name;
       user.social_email    = origindata[i].google.email;
       user.social_photourl = origindata[i].google.photourl;
+    } else if (origindata[i].local && origindata[i].local.email) {
+      // google
+      user.social          = "Local";
+      user.social_id       = "-";
+      user.social_token    = "-";
+      user.social_name     = origindata[i].local.email;
+      user.social_email    = origindata[i].local.email;
+      user.social_photourl = null;
     }
     data.push(user)
   }
@@ -176,27 +206,68 @@
   }
   function reloadData (data) {
     var html = ""
+
+    var groups = <%-JSON.stringify(user.groups())%>;
     for (var i=0; i<data.length; i++) {
+      var imgtag = ''
+      if (data[i]["social_photourl"]) {
+        imgtag = '<img src="'+data[i]["social_photourl"]+'" class="img-circle">'
+      } else if (data[i]["social_name"].toLowerCase() == "admin" && data[i]["social_email"].toLowerCase() == "admin") {
+        imgtag = "<span style='font-size: 18px;'><b>Admin</b></span>"
+      }
+      var socialtag = '<span>' + data[i]["social"] + '</span>'
       var social_token = data[i]["social_token"]
       var thum_social_token = social_token
       if (social_token && social_token.length>17) {
         thum_social_token = social_token.substring(0, 17) + "...";
       }
       html += '<tr>'
-      html +=   '<td>' /*+ String(i+1) */ + '</td>'
-      html +=   '<td>' + data[i]["social_name"] + '</td>'
-      html +=   '<td>' + data[i]["social"]      + '</td>'
-      html +=   '<td>' + data[i]["social_email"]+ '</td>'
-      html +=   '<td>' + thum_social_token      + '</td>'
-      html +=   '<td>' + data[i]["group"]       + '</td>'
-      html +=   '<td>' + data[i]["created_at"]  + '</td>'
-      html +=   '<td>' + data[i]["updated_at"]  + '</td>'
+      html +=   '<td style="vertical-align: middle; text-align: center;">' + imgtag                 + '</td>'
+      html +=   '<td style="vertical-align: middle;"><b>' + data[i]["social_name"] + '</b><br>'
+      html +=   '' + data[i]["social_email"]+ '</td>'
+      html +=   '<td style="vertical-align: middle;">' + socialtag + '<br>'
+      html +=   '<span style="font-family: Courier, Courier New", monospace;">' + thum_social_token      + '</span></td>'
+      html +=   '<td style="vertical-align: middle;">'
+      <% if (user.canGroup("Admin")) { %>
+        if (data[i]["group"] == "Admin") html += '<select disabled>';
+        else html += '<select>';
+        for (var j=0; j<groups.length; j++) {
+          html += '<option value="' + groups[j] + '\"'
+          if (groups[j] == data[i]["group"]) html += ' selected'
+          if (groups[j] == "Admin") html += ' disabled'
+          html += '>'
+          html += groups[j] + '</option>';
+        }
+        html += '</select>';
+      <% } else { %>
+        html += data[i]["group"];
+      <% } %>
+      html += '</td>'
+      html +=   '<td style="vertical-align: middle;">' + data[i]["created_at"]  + '<br>'
+      html +=   '' + data[i]["updated_at"]  + '</td>'
       html += '</tr>'
     }
     $("#tablebody").html(html)
   }
 
+
+  <% if (user.group == "Admin") { %>
+  function deleteUsers() {
+    $.ajax({
+        url: '/users',
+        type: 'DELETE',
+        success: function(result) {
+            // Do something with the result
+            location.reload();
+        }
+    });
+  }
+  <% } %>
+
   </script>
+  <style media="screen">
+
+  </style>
 
 <script src="../dist/js/bootstrap.min.js"></script>
 <script src="../dist/js/vendor/holder.min.js"></script>

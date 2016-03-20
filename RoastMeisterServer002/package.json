@@ -32,6 +32,7 @@
     "method-override": "~1.0.0",
     "express-session": "~1.0.0",
 
-    "dateformat" : "latest"
+    "dateformat" : "latest",
+    "requestify" : "latest"
   }
 }

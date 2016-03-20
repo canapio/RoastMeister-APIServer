@@ -39,7 +39,22 @@
         <div class="menu-list">
 
             <ul id="menu-content" class="menu-content collapse out">
-
+              <%
+                var photourl = null;
+                console.log(user.facebook.photourl)
+                if (user.facebook && user.facebook.photourl) {
+                  photourl = user.facebook.photourl
+                } else if (user.twitter && user.twitter.photourl) {
+                  photourl = user.twitter.photourl
+                } else if (user.google && user.google.photourl) {
+                  photourl = user.google.photourl
+                }
+              %>
+              <a href="/profile"><li>내 프로필
+                <% if (photourl) { %>
+                <span style="float: right; text-align: center;"><img src="<%= photourl %>" class="img-circle" style="width: 65%;"></span>
+                <% } %>
+              </li></a>
               <a><li class="collapsed" data-toggle="collapse" data-target="#userside">
                 자동완성<span class="arrow"></span>
               </li></a>
@@ -58,8 +73,9 @@
                 <li>New Service 2</li>
                 <li>New Service 3</li>
               </ul>
+              <% if (user.canGroup("Monitor")) { %>
               <a href="/users"><li>사용자</li></a>
-              <a href="/profile"><li>내 프로필</li></a>
+              <% } %>
             </ul>
      </div>
 </div>

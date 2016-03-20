@@ -28,12 +28,20 @@ module.exports = function(passport, connect) {
   // LOGOUT ==============================
   router.get('/logout', function(req, res) {
       req.logout();
-      res.redirect('/');
+      res.redirect('/login');
+  });
+  router.get('/adminlogin', function(req, res) {
+      if (req.isAuthenticated()) {
+        req.logout();
+      }
+      res.render('adminlogin.ejs');
   });
 
   // MAIN PAGE ==============================
   router.get('/', isLoggedIn, function(req, res) {
-    res.render('index.ejs');
+    res.render('index.ejs', {
+      user : req.user,
+    });
   });
 
   router.get('/graphtest', function(req, res) {
@@ -47,6 +55,7 @@ module.exports = function(passport, connect) {
         autocompleteModels[dbtitle].find({}, function(err, data) {
           if (err) {
             res.render('autocomplete.ejs', {
+              user : req.user,
               title : dbtitle,
               data : null,
               error : error
@@ -54,6 +63,7 @@ module.exports = function(passport, connect) {
           } else {
             // for (var i=0; i<data.length; i++) {data[i]["created_at"] = dateFormat(data[i]["created_at"], "yyyy/mm/dd HH:MM:ss"); data[i]["updated_at"] = dateFormat(data[i]["updated_at"], "yyyy/mm/dd HH:MM:ss");}
             res.render('autocomplete.ejs', {
+              user : req.user,
               title : dbtitle,
               data : data,
               error : null
@@ -70,26 +80,28 @@ module.exports = function(passport, connect) {
     userModel.find({}, function(err, data) {
       if (err) {
         res.render('users.ejs', {
+          user : req.user,
           data : null,
           error : error
         });
       } else {
         res.render('users.ejs', {
+          user : req.user,
           data : data,
           error : null
         });
       }
     })
   })
-  // .delete(function(req, res) {
-  //   userModel.remove({}, function(err) {
-  //     if (err) {
-  //       res.json({})
-  //     } else {
-  //       res.json({})
-  //     }
-  //   })
-  // })
+  .delete(function(req, res) {
+    userModel.remove({}, function(err) {
+      if (err) {
+        res.json({})
+      } else {
+        res.json({})
+      }
+    })
+  })
 
 
 
@@ -110,7 +122,7 @@ module.exports = function(passport, connect) {
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
             successRedirect : '/', // redirect to the secure profile section
-            failureRedirect : '/login', // redirect back to the signup page if there is an error
+            failureRedirect : '/adminlogin', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
 
