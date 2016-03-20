@@ -103,7 +103,11 @@ module.exports = function(passport, connect) {
     })
   })
 
-
+  router.route('/user/:id').put(isLoggedIn, checkGroup("Admin"), function(req, res) {
+    userModel.update({_id: req.params.id}, req.body, function(err, numAffected) {
+      res.json({"err": err, "data": numAffected})
+    })
+  })
 
 
 

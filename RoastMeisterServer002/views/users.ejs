@@ -94,6 +94,10 @@
 
 
 <div class="main-body main">
+  <div id="alertdiv">
+
+  </div>
+
   <% if (user.group == "Admin") { %>
   <div class="" style="float: right; margin-top: 15px;">
     <button type="button" class="btn btn-danger" onclick="deleteUsers();">사용자 전체 삭제</button>
@@ -231,7 +235,7 @@
       html +=   '<td style="vertical-align: middle;">'
       <% if (user.canGroup("Admin")) { %>
         if (data[i]["group"] == "Admin") html += '<select disabled>';
-        else html += '<select>';
+        else html += '<select onchange="changeGroupValue(this.value, ' + i + ');">';
         for (var j=0; j<groups.length; j++) {
           html += '<option value="' + groups[j] + '\"'
           if (groups[j] == data[i]["group"]) html += ' selected'
@@ -262,6 +266,38 @@
             location.reload();
         }
     });
+  }
+  function changeGroupValue(value, index) {
+    var param = {
+      group: value
+    }
+    $.ajax({
+        url: '/user/'+data[index]["_id"],
+        type: 'PUT',
+        data: param,
+        success: function(result) {
+            // Do something with the result
+            var html = ""
+            if (result.err) {
+              html += '<div class="alert alert-danger alert-dismissible fade in" role="alert">'
+              html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'
+              html += '<strong>Failed!</strong> UPDATE :: id:' + data[index]["_id"] + ', group:' + value
+              html += '</div>'
+              $("#alertdiv").html(html)
+            } else {
+              html += '<div class="alert alert-success alert-dismissible fade in" role="alert">'
+              html += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>'
+              html += '<strong>Success!</strong> UPDATE :: id:' + data[index]["_id"] + ', group:' + value
+              html += '</div>'
+              $("#alertdiv").html(html)
+            }
+            console.log(JSON.stringify(result))
+        },
+        error:function(request,status,error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+    console.log(value + ", " + index)
   }
   <% } %>
 
