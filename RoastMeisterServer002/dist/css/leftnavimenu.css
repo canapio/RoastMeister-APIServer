@@ -1,9 +1,10 @@
-.center-cropped {/* 50% 50% centers image in div */
+.center-cropped {
   background-size:cover;
   background-repeat:no-repeat;
   width:50px;
   height:50px;
 }
+
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
@@ -12,7 +13,7 @@
   background-color: #2e353d;
   position: fixed;
   top: 0px;
-  width: 260px;
+  width: 220px;
   height: 100%;
   color: #e1ffff;
 }
