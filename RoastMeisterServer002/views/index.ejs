@@ -50,7 +50,7 @@
               photourl = user.google.photourl
             }
           %>
-          <a href="/profile"><li>내 프로필
+          <a href="/profile"><li><del style="opacity: 0.5;">내 프로필</del>
             <% if (photourl) { %>
             <div style="float: right; text-align: center;"><div class="center-cropped img-circle" style="background-image: url(<%= photourl %>); width: 38px; height: 38px; margin: 6px 6px; vertical-align: middle;"></div></div>
             <% } else if (user.local && user.local.email == "admin") { %>
@@ -72,8 +72,8 @@
           </li></a>
           <ul class="sub-menu collapse" id="service">
             <a href="/roasting/sampledata1"><li>Sample Data 1</li></a>
-            <li>Sample Data 2</li>
-            <li>Sample Data 3</li>
+            <li><del style="opacity: 0.5;">Sample Data 2</del></li>
+            <li><del style="opacity: 0.5;">Sample Data 3</del></li>
           </ul>
           <% if (user.canGroup("Monitor")) { %>
           <a href="/users"><li>사용자</li></a>
