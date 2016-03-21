@@ -141,7 +141,7 @@ a.brand {
 .menu-bottom ul {
   display: inline-block;
 }
-@media (max-width: 767px) {
+@media (max-width: 971px) {
   .nav-side-menu {
     position: relative;
     width: 100%;
@@ -171,7 +171,7 @@ a.brand {
     margin-left: 0px;
   }
 }
-@media (min-width: 767px) {
+@media (min-width: 971px) {
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
