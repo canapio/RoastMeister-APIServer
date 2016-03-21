@@ -95,11 +95,12 @@ html, body {
 </style>
 <div class="main-body main">
   <h1 class="page-header">Carloz Sample Data</h1>
-  <h2></h2>
+  <h2>온도 그래프</h2>
   <div style="padding: 8px 0px; ">
     <div id="chartContainer" style="height: 440px; width: 100%;">
     </div>
   </div>
+  <h2>커핑 그래프</h2>
   <div id="coffeeingdatadiv" class="row">
   </div>
 
@@ -164,8 +165,10 @@ html, body {
     var coffeeingdataArray = <%-JSON.stringify(sampledata["coffeeingdataArray"])%>
 
     var html = ""
+    var daytitles = ["24시간 이내", "3일 경과", "1주일 경과"]
     for (var i=0; i<coffeeingdataArray.length; i++) {
       html += '<div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0">'
+      html += '<h4 style="text-align: center;">' + daytitles[i] + '</h4>'
       html += '<canvas id="canvas' + i + '" height="450" width="450"></canvas>'
       html += '</div>'
     }
