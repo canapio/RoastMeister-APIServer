@@ -1,0 +1,19 @@
+{
+  "name": "collect-roasting-002",
+  "version": "0.1.0",
+  "description": "Roast Meister autocomplete server",
+  "main": "Server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Node.js",
+    "mongoDb"
+  ],
+  "author": "canapio",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2"
+  }
+}
