@@ -24,7 +24,7 @@ Ko
 $ mongod
 
 # clone repository
-$ git clone https://github.com/canapio/RoastMeister-Server.git
+$ git clone https://github.com/canapio/RoastMeister-APIServer.git
 
 # Run server.js (Input auth_key only first time. After second time, command $ node server.js)
 $ node server.js auth_key
