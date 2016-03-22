@@ -1,10 +1,10 @@
-# RoastMeister-Server
+# RoastMeister-APIServer
 
 ![](https://github.com/canapio/RoastMeister-Server/blob/master/roast_meister_server_logo.png?raw=true)
 
 En
 
-This application is server application for Roast Meister(iOS) based on Node.js
+This application is api server application for Roast Meister(iOS) based on Node.js
 * Authorization : When you run server first, node command with **Authorization** argv($ node server.js my_auth_key). Client must put **Authorization Key** in request header at Authorization Field, and then request api to server.
 * Auto completion function : This server application collects word from user input in iOS client application.
 
