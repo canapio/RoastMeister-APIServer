@@ -20,6 +20,7 @@ AutoComplete = function (mongoose, connection, modelname) {
     name : {type: String, require: true, unique: true},
     count : Number,
     deviceids : [String],
+    enable: Boolean,
     created_at : Date,
     updated_at : Date
   })
@@ -30,6 +31,7 @@ AutoComplete = function (mongoose, connection, modelname) {
     this.updated_at = currentDate
     if (!this.created_at) {
       this.created_at = currentDate
+      this.enable = true
     }
     next()
   })
