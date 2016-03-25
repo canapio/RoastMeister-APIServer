@@ -95,7 +95,7 @@ AutoComplete.prototype.search = function(query, callback) {
     created_at: 1,
     updated_at: 1
   }
-  this.Model.find().sort({'count':-1}).select(selectquery).limit(limit).exec(callback)
+  this.Model.find(param).sort({'count':-1}).select(selectquery).limit(limit).exec(callback)
 }
 
 
