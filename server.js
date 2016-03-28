@@ -123,7 +123,7 @@ app.use('/roastmeister001', function (req, res, next) {
 
 
 
-var autocompleteTitles = ["nation", "farm", "beankind", "machine", "faul"]
+var autocompleteTitles = ["nation", "farm", "beankind", "drykind", "machine", "faul"]
 var autocompltetDBs = {}
 for (var i=0; i<autocompleteTitles.length; i++) {
   var title = autocompleteTitles[i]

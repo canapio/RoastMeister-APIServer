@@ -21,6 +21,7 @@ AutoComplete = function (mongoose, connection, modelname) {
     count : Number,
     deviceids : [String],
     enable: Boolean,
+    highlight: Boolean,
     created_at : Date,
     updated_at : Date
   })
@@ -98,7 +99,7 @@ AutoComplete.prototype.search = function(query, callback) {
     created_at: 1,
     updated_at: 1
   }
-  this.Model.find(param).sort({'count':-1}).select(selectquery).limit(limit).exec(callback)
+  this.Model.find(param).sort({'highlight':-1, 'count':-1}).select(selectquery).limit(limit).exec(callback)
 }
 
 
