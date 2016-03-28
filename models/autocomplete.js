@@ -68,6 +68,7 @@ AutoComplete.prototype.upsert = function(param, callback) {
           name: param.name,
           count: 1,
           deviceids: [param.deviceid],
+          enable: true
         })
         autocompletedata.save(function(err) {
           callback(err, autocompletedata)
