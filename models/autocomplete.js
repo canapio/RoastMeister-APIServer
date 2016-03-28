@@ -89,8 +89,11 @@ AutoComplete.prototype.search = function(query, callback) {
     limit = 50
   }
   var param = {
-    name: new RegExp(query.q, 'i'),
+    param.name = new RegExp(query.q, 'i'),
     enable: {$ne: false}
+  }
+  if (query.highlight) {
+    param.highlight = true
   }
   var selectquery = {
     name: 1,
